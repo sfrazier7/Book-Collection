@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -27,7 +26,7 @@ public class Demo {
 				else {
 					System.out.println("Enter the author's info.");
 					String author = input.nextLine();
-					String space = input.nextLine();
+					input.nextLine();
 					System.out.println("Enter the title.");
 					String title = input.nextLine();
 					System.out.println("Enter the book's isbn.");
@@ -46,8 +45,15 @@ public class Demo {
 		System.out.println("The books in the collection are: " + books);
 		FileOutputStream fos = new FileOutputStream(
 				new File("C:\\Users\\ShafirFrazier\\OneDrive - Xpanxion\\Documents\\bookcollection.docx"));
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(books);
-		System.out.println("The books collection have been added into the file.");
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(books);
+			System.out.println("The books collection have been added into the file.");
+		} catch(IOException e) {
+			System.out.println("No objects to write onto the file.");
+		}
+		
+		
+		input.close();
 	}
 }
