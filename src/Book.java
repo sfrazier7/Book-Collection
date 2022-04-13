@@ -17,7 +17,9 @@ public class Book implements Serializable {
 		this.price = price;
 		this.isBorrowed = isBorrowed;
 	}
-
+	
+	
+	//Getters & Setters for Object Attributes
 	public String getTitle() {
 		return title;
 	}
